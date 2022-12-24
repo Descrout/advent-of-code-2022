@@ -7,6 +7,33 @@ import (
 	"strconv"
 )
 
+func main() {
+	inputLines := readLineByLine("input.txt")
+
+	latestElfCalories := []int{}
+	maxElfCalori := 0
+
+	for _, line := range inputLines {
+		if len(line) == 0 {
+			totalCalori := sumArray(latestElfCalories)
+			if totalCalori > maxElfCalori {
+				maxElfCalori = totalCalori
+			}
+			latestElfCalories = latestElfCalories[:0]
+			continue
+		}
+
+		calori, err := strconv.Atoi(line)
+		if err != nil {
+			fmt.Println(err.Error())
+			continue
+		}
+		latestElfCalories = append(latestElfCalories, calori)
+	}
+
+	fmt.Println("Most carried calories:", maxElfCalori)
+}
+
 func readLineByLine(filePath string) []string {
 	readFile, err := os.Open(filePath)
 
@@ -34,31 +61,4 @@ func sumArray(arr []int) int {
 	}
 
 	return total
-}
-
-func main() {
-	inputLines := readLineByLine("input.txt")
-
-	latestElfCalories := []int{}
-	maxElfCalori := 0
-
-	for _, line := range inputLines {
-		if len(line) == 0 {
-			totalCalori := sumArray(latestElfCalories)
-			if totalCalori > maxElfCalori {
-				maxElfCalori = totalCalori
-			}
-			latestElfCalories = latestElfCalories[:0]
-			continue
-		}
-
-		calori, err := strconv.Atoi(line)
-		if err != nil {
-			fmt.Println(err.Error())
-			continue
-		}
-		latestElfCalories = append(latestElfCalories, calori)
-	}
-
-	fmt.Println("Most carried calories:", maxElfCalori)
 }

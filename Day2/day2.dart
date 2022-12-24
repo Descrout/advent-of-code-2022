@@ -14,6 +14,24 @@ const scores = <String, int>{
 // I put "C" as first and "A" as last
 const symbols = <String>["C", "A", "B", "C", "A"];
 
+void main() async {
+  final inputFile = File("input.txt");
+  final inputLines = await inputFile.readAsLines();
+
+  int scorePart1 = 0;
+  int scorePart2 = 0;
+  for (final line in inputLines) {
+    final splitted = line.split(" ");
+    final other = splitted[0];
+    final mine = splitted[1];
+    scorePart1 += getMyScore(other, mine);
+    scorePart2 += getMyScorePart2(other, mine);
+  }
+
+  print("[Part1] Your score is: $scorePart1");
+  print("[Part2] Your score is: $scorePart2");
+}
+
 int getMyScore(String other, String mine) {
   int myScore = scores[mine]!;
   final otherScore = scores[other]!;
@@ -39,20 +57,4 @@ int getMyScorePart2(String other, String mine) {
     default:
       return getMyScore(other, other);
   }
-}
-
-void main() async {
-  final inputFile = File("input.txt");
-  final inputLines = await inputFile.readAsLines();
-
-  int scorePart1 = 0;
-  int scorePart2 = 0;
-  for (final line in inputLines) {
-    final splitted = line.split(" ");
-    scorePart1 += getMyScore(splitted[0], splitted[1]);
-    scorePart2 += getMyScorePart2(splitted[0], splitted[1]);
-  }
-
-  print("[Part1] Your score is: $scorePart1");
-  print("[Part2] Your score is: $scorePart2");
 }
