@@ -1,8 +1,4 @@
-const fs = require('fs');
-
-const allFileContents = fs.readFileSync('input.txt', 'utf-8');
-const inputLines = allFileContents.split(/\r?\n/);
-
+const inputLines = readLineByLine('input.txt');
 
 const latestElfCalories = [];
 let maxElfCalori = 0;
@@ -22,3 +18,11 @@ for (const line of inputLines) {
 }
 
 console.log(`Most carried calories: ${maxElfCalori}`);
+
+function readLineByLine(filePath) {
+    const fs = require('fs');
+    const allFileContents = fs.readFileSync(filePath, 'utf-8');
+    const inputLines = allFileContents.split(/\r?\n/);
+
+    return inputLines;
+}
