@@ -16,37 +16,37 @@ scores = {
 symbols = ["C", "A", "B", "C", "A"]
 
 def get_my_score(other, mine):
-    myScore = scores[mine]
-    otherScore = scores[other]
+    my_score = scores[mine]
+    other_score = scores[other]
 
-    diff = myScore - otherScore
+    diff = my_score - other_score
     if diff == 0:
-        myScore += 3
+        my_score += 3
     elif diff == 1 or diff == -2:
-        myScore += 6
+        my_score += 6
 
-    return myScore
+    return my_score
 
 def get_my_score_part2(other, mine):
-    symbolIdx = scores[other]
+    symbol_idx = scores[other]
 
     match mine:
         case "X":
-            return get_my_score(other, symbols[symbolIdx - 1])
+            return get_my_score(other, symbols[symbol_idx - 1])
         case "Z":
-            return get_my_score(other, symbols[symbolIdx + 1])
+            return get_my_score(other, symbols[symbol_idx + 1])
         case _:
             return get_my_score(other, other)
 
-scorePart1 = 0
-scorePart2 = 0
+score_p1 = 0
+score_p2 = 0
 for line in input_lines:
     line = line.strip()
     splitted = line.split(" ")
     other = splitted[0]
     mine = splitted[1]
-    scorePart1 += get_my_score(other, mine)
-    scorePart2 += get_my_score_part2(other, mine)
+    score_p1 += get_my_score(other, mine)
+    score_p2 += get_my_score_part2(other, mine)
 
-print("[Part1] Your score is:", scorePart1)
-print("[Part2] Your score is:", scorePart2)
+print("[Part1] Your score is:", score_p1)
+print("[Part2] Your score is:", score_p2)
