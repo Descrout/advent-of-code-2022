@@ -41,9 +41,9 @@ int findRecurringInGroup(List<String> group) {
   return maxLetter;
 }
 
-T? getHighestValuedKey<T>(Map<T, int> map) {
+int? getHighestValuedKey(Map<int, int> map) {
   int maxOccurence = 0;
-  T? maxKey;
+  int? maxKey;
   for (final kv in map.entries) {
     if (kv.value > maxOccurence) {
       maxOccurence = kv.value;
