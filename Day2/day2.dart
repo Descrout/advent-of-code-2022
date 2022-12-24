@@ -10,7 +10,8 @@ const scores = <String, int>{
 };
 
 // Some languages do negative number modulus different
-// So I put "C" as first, for the wrap around
+// So instead of % wrap around
+// I put "C" as first and "A" as last
 const symbols = <String>["C", "A", "B", "C", "A"];
 
 int getMyScore(String other, String mine) {
