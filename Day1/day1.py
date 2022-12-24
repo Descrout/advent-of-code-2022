@@ -5,12 +5,12 @@ latest_elf_calories = []
 top_three_elf_calories = [0, 0, 0]
 top_elf_calories_len = 3
 
-def update_top_three(newCalories): 
+def update_top_three(new_calories): 
     for i in range(top_elf_calories_len):
-        if newCalories > top_three_elf_calories[i]:
-            oldCalori = top_three_elf_calories[i]
-            top_three_elf_calories[i] = newCalories
-            update_top_three(oldCalori)
+        if new_calories > top_three_elf_calories[i]:
+            old_calori = top_three_elf_calories[i]
+            top_three_elf_calories[i] = new_calories
+            update_top_three(old_calori)
             break
 
 for line in input_lines:
