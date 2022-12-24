@@ -1,4 +1,4 @@
-# Advent of Code in 5 languages
+# Advent of Code 2022 in 5 languages
 
   
 
@@ -15,6 +15,7 @@ In this repo, I will try to complete all challenges in 5 different programming l
 `cd Day(x)` and run them.  Of course you will need dart, go, nodejs, python and rust to run each desired language.
 ```makefile
 cd Day1
+
 make dart
 make go
 make js
@@ -23,6 +24,8 @@ make rust
 ```
 If you don't have Makefile:
 ```
+cd Day1
+
 dart day1.dart
 go run day1.go
 node day1.js
