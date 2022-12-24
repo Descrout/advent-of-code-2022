@@ -4,7 +4,10 @@ void main() async {
   final inputFile = File("input.txt");
   final inputLines = await inputFile.readAsLines();
 
-  int sumErrors = getSumErrors(inputLines);
+  int sumErrors = inputLines.fold(
+    0,
+    (prev, text) => prev + getPriority(findError(text)),
+  );
 
   print("[Part1] Sum of priorities: $sumErrors");
 
@@ -50,14 +53,9 @@ T? getHighestValuedKey<T>(Map<T, int> map) {
   return maxKey;
 }
 
-int getSumErrors(List<String> texts) => texts.fold(
-      0,
-      (previousValue, text) => previousValue + getPriority(findError(text)),
-    );
-
 List<int> getUniqueAscii(String text) => text.codeUnits.fold(
       <int>{},
-      (previousValue, letterCode) => previousValue..add(letterCode),
+      (prev, letterCode) => prev..add(letterCode),
     ).toList();
 
 int getPriority(int letter) => letter > 96 ? letter - 96 : letter - 38;
