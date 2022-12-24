@@ -1,13 +1,5 @@
 # Day 1: Calorie Counting
 
-```
-make dart
-make go
-make js
-make python
-make rust
-```
-
 [https://adventofcode.com/2022/day/1](https://adventofcode.com/2022/day/1)
 
 ## Description
