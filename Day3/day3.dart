@@ -4,7 +4,7 @@ void main() async {
   final inputFile = File("input.txt");
   final inputLines = await inputFile.readAsLines();
 
-  int sumErrors = inputLines.fold(
+  final sumErrors = inputLines.fold(
     0,
     (prev, text) => prev + getPriority(findError(text)),
   );
