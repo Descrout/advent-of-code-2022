@@ -7,18 +7,18 @@ import (
 	"strconv"
 )
 
+var latestElfCalories = []int{}
+var topThreeElfCalories = []int{0, 0, 0}
+
+const topElfCaloriesLength = 3
+
 func main() {
 	inputLines := readLineByLine("input.txt")
-
-	latestElfCalories := []int{}
-	maxElfCalori := 0
 
 	for _, line := range inputLines {
 		if len(line) == 0 {
 			totalCalori := sumArray(latestElfCalories)
-			if totalCalori > maxElfCalori {
-				maxElfCalori = totalCalori
-			}
+			updateTopThree(totalCalori)
 			latestElfCalories = latestElfCalories[:0]
 			continue
 		}
@@ -31,7 +31,20 @@ func main() {
 		latestElfCalories = append(latestElfCalories, calori)
 	}
 
-	fmt.Println("Most carried calories:", maxElfCalori)
+	fmt.Println("[Part1] Most carried calories:", topThreeElfCalories[0])
+	topThreeSum := sumArray(topThreeElfCalories)
+	fmt.Println("[Part2] Top three calories sum:", topThreeSum)
+}
+
+func updateTopThree(newCalories int) {
+	for i := 0; i < topElfCaloriesLength; i++ {
+		if newCalories > topThreeElfCalories[i] {
+			oldCalori := topThreeElfCalories[i]
+			topThreeElfCalories[i] = newCalories
+			updateTopThree(oldCalori)
+			break
+		}
+	}
 }
 
 func readLineByLine(filePath string) []string {
