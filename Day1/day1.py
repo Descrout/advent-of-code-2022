@@ -3,10 +3,10 @@ input_lines = file.readlines()
 
 latest_elf_calories = []
 top_three_elf_calories = [0, 0, 0]
-topElfCaloriesLength = 3
+top_elf_calories_len = 3
 
 def update_top_three(newCalories): 
-    for i in range(topElfCaloriesLength):
+    for i in range(top_elf_calories_len):
         if newCalories > top_three_elf_calories[i]:
             oldCalori = top_three_elf_calories[i]
             top_three_elf_calories[i] = newCalories
