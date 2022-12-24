@@ -35,22 +35,16 @@ int findRecurringInGroup(List<String> group) {
     }
   }
 
-  final maxLetter = getHighestValuedKey(occurences);
-
-  if (maxLetter == null) throw "could not find recurring letter in a group";
-  return maxLetter;
+  return getThreeOccurenceLetter(occurences);
 }
 
-int? getHighestValuedKey(Map<int, int> map) {
-  int maxOccurence = 0;
-  int? maxKey;
+int getThreeOccurenceLetter(Map<int, int> map) {
   for (final kv in map.entries) {
-    if (kv.value > maxOccurence) {
-      maxOccurence = kv.value;
-      maxKey = kv.key;
+    if (kv.value == 3) {
+      return kv.key;
     }
   }
-  return maxKey;
+  throw "could not find 3 times recurring letter in a group";
 }
 
 List<int> getUniqueAscii(String text) => text.codeUnits.fold(
