@@ -1,7 +1,9 @@
 import 'dart:io';
 
+const topElfCaloriesLength = 3;
 final topThreeElfCalories = <int>[0, 0, 0];
 final latestElfCalories = <int>[];
+
 void main() async {
   final inputFile = File("input.txt");
   final inputLines = await inputFile.readAsLines();
@@ -24,7 +26,7 @@ void main() async {
 }
 
 void updateTopThree(int newCalories) {
-  for (int i = 0; i < topThreeElfCalories.length; i++) {
+  for (int i = 0; i < topElfCaloriesLength; i++) {
     if (newCalories > topThreeElfCalories[i]) {
       final oldCalori = topThreeElfCalories[i];
       topThreeElfCalories[i] = newCalories;

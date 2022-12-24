@@ -1,7 +1,8 @@
 const inputLines = readLineByLine('input.txt');
 
-const latestElfCalories = [];
+const topElfCaloriesLength = 3;
 const topThreeElfCalories = [0, 0, 0];
+const latestElfCalories = [];
 
 for (const line of inputLines) {
     if (line.length == 0) {
@@ -20,7 +21,7 @@ const topThreeSum = topThreeElfCalories.reduce((value, sum) => value + sum);
 console.log(`[Part2] Top three calories sum: ${topThreeSum}`);
 
 function updateTopThree(newCalories) {
-    for (let i = 0; i < topThreeElfCalories.length; i++) {
+    for (let i = 0; i < topElfCaloriesLength; i++) {
         if (newCalories > topThreeElfCalories[i]) {
             const oldCalori = topThreeElfCalories[i];
             topThreeElfCalories[i] = newCalories;
