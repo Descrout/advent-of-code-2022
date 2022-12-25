@@ -44,9 +44,4 @@ class Pair {
       max2: int.parse(second[1]),
     );
   }
-
-  @override
-  String toString() {
-    return 'Pair(min1: $min1, max1: $max1, min2: $min2, max2: $max2)';
-  }
 }
