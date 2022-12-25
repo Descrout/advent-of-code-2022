@@ -1,5 +1,19 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
+
+void main() async {
+  final inputFile = File("input.txt");
+  final inputLines = await inputFile.readAsLines();
+
+  final pairs = <Pair>[];
+  for (final line in inputLines) {
+    pairs.add(Pair.fromStr(line));
+  }
+
+  final fullyContains = pairs.where((element) => element.fullyContains).length;
+  final overlaps = pairs.where((element) => element.overlaps).length;
+  print("[Part1] Fully contained pairs: $fullyContains");
+  print("[Part2] Overlapped pairs: $overlaps");
+}
 
 class Pair {
   final int min1;
@@ -35,19 +49,4 @@ class Pair {
   String toString() {
     return 'Pair(min1: $min1, max1: $max1, min2: $min2, max2: $max2)';
   }
-}
-
-void main() async {
-  final inputFile = File("input.txt");
-  final inputLines = await inputFile.readAsLines();
-
-  final pairs = <Pair>[];
-  for (final line in inputLines) {
-    pairs.add(Pair.fromStr(line));
-  }
-
-  final fullyContains = pairs.where((element) => element.fullyContains).length;
-  final overlaps = pairs.where((element) => element.overlaps).length;
-  print("[Part1] Fully contained pairs: $fullyContains");
-  print("[Part2] Overlapped pairs: $overlaps");
 }
