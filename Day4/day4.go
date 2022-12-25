@@ -21,8 +21,8 @@ func main() {
 	for _, pair := range pairs {
 		if pair.fullyContains() {
 			fullyContains++
-		}
-		if pair.overlaps() {
+			overlaps++
+		} else if pair.overlaps() {
 			overlaps++
 		}
 	}

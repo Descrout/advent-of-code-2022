@@ -27,8 +27,8 @@ overlaps = 0
 for pair in pairs:
     if pair.fully_contains():
         fully_contains += 1
-    
-    if pair.overlaps():
+        overlaps += 1
+    elif pair.overlaps():
         overlaps += 1
     
 print("[Part1] Fully contained pairs:", fully_contains)

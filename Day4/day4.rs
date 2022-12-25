@@ -16,8 +16,8 @@ fn main() {
     for pair in pairs.iter() {
         if pair.fully_contains() {
             fully_contains += 1;
-        }
-        if pair.overlaps() {
+            overlaps += 1;
+        } else if pair.overlaps() {
             overlaps += 1;
         }
     }
